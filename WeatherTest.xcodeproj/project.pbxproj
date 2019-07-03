@@ -17,6 +17,11 @@
 		8A3A1F5922CCFBAD00770E99 /* WeatherListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3A1F5822CCFBAD00770E99 /* WeatherListInteractor.swift */; };
 		8A3A1F5B22CCFBDE00770E99 /* WeatherListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3A1F5A22CCFBDE00770E99 /* WeatherListPresenter.swift */; };
 		8A3A1F5D22CCFC0700770E99 /* WeatherListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3A1F5C22CCFC0700770E99 /* WeatherListRouter.swift */; };
+		8A3A1F6222CD01BE00770E99 /* WeatherListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3A1F6022CD01BE00770E99 /* WeatherListCell.swift */; };
+		8A3A1F6322CD01BE00770E99 /* WeatherListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A3A1F6122CD01BE00770E99 /* WeatherListCell.xib */; };
+		8A3A1F6922CD023100770E99 /* WeatherListCellInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3A1F6822CD023100770E99 /* WeatherListCellInteractor.swift */; };
+		8A3A1F6B22CD025700770E99 /* WeatherListCellPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3A1F6A22CD025700770E99 /* WeatherListCellPresenter.swift */; };
+		8A3A1F6D22CD027700770E99 /* WeatherListCellRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3A1F6C22CD027700770E99 /* WeatherListCellRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +49,11 @@
 		8A3A1F5822CCFBAD00770E99 /* WeatherListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListInteractor.swift; sourceTree = "<group>"; };
 		8A3A1F5A22CCFBDE00770E99 /* WeatherListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListPresenter.swift; sourceTree = "<group>"; };
 		8A3A1F5C22CCFC0700770E99 /* WeatherListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListRouter.swift; sourceTree = "<group>"; };
+		8A3A1F6022CD01BE00770E99 /* WeatherListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListCell.swift; sourceTree = "<group>"; };
+		8A3A1F6122CD01BE00770E99 /* WeatherListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeatherListCell.xib; sourceTree = "<group>"; };
+		8A3A1F6822CD023100770E99 /* WeatherListCellInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListCellInteractor.swift; sourceTree = "<group>"; };
+		8A3A1F6A22CD025700770E99 /* WeatherListCellPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListCellPresenter.swift; sourceTree = "<group>"; };
+		8A3A1F6C22CD027700770E99 /* WeatherListCellRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListCellRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +137,7 @@
 				8A3A1F5622CCFB7200770E99 /* Interactor */,
 				8A3A1F5522CCFB6600770E99 /* Presenter */,
 				8A3A1F5722CCFB7800770E99 /* Router */,
+				8A3A1F5E22CD018700770E99 /* Submodules */,
 			);
 			path = WeatherList;
 			sourceTree = "<group>";
@@ -160,6 +171,58 @@
 			isa = PBXGroup;
 			children = (
 				8A3A1F5C22CCFC0700770E99 /* WeatherListRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		8A3A1F5E22CD018700770E99 /* Submodules */ = {
+			isa = PBXGroup;
+			children = (
+				8A3A1F6422CD01C300770E99 /* WeatherListCell */,
+			);
+			path = Submodules;
+			sourceTree = "<group>";
+		};
+		8A3A1F5F22CD019900770E99 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8A3A1F6022CD01BE00770E99 /* WeatherListCell.swift */,
+				8A3A1F6122CD01BE00770E99 /* WeatherListCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8A3A1F6422CD01C300770E99 /* WeatherListCell */ = {
+			isa = PBXGroup;
+			children = (
+				8A3A1F5F22CD019900770E99 /* View */,
+				8A3A1F6522CD01D200770E99 /* Interactor */,
+				8A3A1F6622CD01DA00770E99 /* Presenter */,
+				8A3A1F6722CD020100770E99 /* Router */,
+			);
+			path = WeatherListCell;
+			sourceTree = "<group>";
+		};
+		8A3A1F6522CD01D200770E99 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				8A3A1F6822CD023100770E99 /* WeatherListCellInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		8A3A1F6622CD01DA00770E99 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				8A3A1F6A22CD025700770E99 /* WeatherListCellPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		8A3A1F6722CD020100770E99 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				8A3A1F6C22CD027700770E99 /* WeatherListCellRouter.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -245,6 +308,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A3A1F6322CD01BE00770E99 /* WeatherListCell.xib in Resources */,
 				8A23F9C522CCDD1A004CD250 /* LaunchScreen.storyboard in Resources */,
 				8A23F9C222CCDD1A004CD250 /* Assets.xcassets in Resources */,
 				8A3A1F5122CCF8BC00770E99 /* WeatherList.storyboard in Resources */,
@@ -266,11 +330,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A3A1F4C22CCF7A300770E99 /* Styles.swift in Sources */,
+				8A3A1F6922CD023100770E99 /* WeatherListCellInteractor.swift in Sources */,
 				8A3A1F5922CCFBAD00770E99 /* WeatherListInteractor.swift in Sources */,
 				8A3A1F4F22CCF89D00770E99 /* WeatherListViewController.swift in Sources */,
 				8A3A1F5B22CCFBDE00770E99 /* WeatherListPresenter.swift in Sources */,
 				8A23F9BB22CCDD19004CD250 /* AppDelegate.swift in Sources */,
 				8A3A1F5D22CCFC0700770E99 /* WeatherListRouter.swift in Sources */,
+				8A3A1F6222CD01BE00770E99 /* WeatherListCell.swift in Sources */,
+				8A3A1F6B22CD025700770E99 /* WeatherListCellPresenter.swift in Sources */,
+				8A3A1F6D22CD027700770E99 /* WeatherListCellRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -427,7 +495,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G5K3X8K9NT;
 				INFOPLIST_FILE = WeatherTest/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -446,7 +514,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G5K3X8K9NT;
 				INFOPLIST_FILE = WeatherTest/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
