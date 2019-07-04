@@ -27,5 +27,5 @@ enum AppColors: String {
 
 struct AppFonts {
     
-    static let common = UIFont.systemFont(ofSize: 16, weight: .medium)
+    static let common = UIFont.systemFont(ofSize: 18, weight: .semibold)
 }

@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,34 +16,24 @@
             <objects>
                 <viewController storyboardIdentifier="WeatherListViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Bte-UN-04b" customClass="WeatherListViewController" customModule="WeatherTest" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6fK-CN-gnh">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JZP-yR-piK">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="SaS-5Z-RSH">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SaS-5Z-RSH" id="Q7h-a7-rgn">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JZP-yR-piK">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="Bte-UN-04b" id="9IU-s1-EYt"/>
                                     <outlet property="delegate" destination="Bte-UN-04b" id="67E-Me-oZx"/>
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" name="white"/>
                         <constraints>
-                            <constraint firstItem="JZP-yR-piK" firstAttribute="leading" secondItem="60p-sW-1fb" secondAttribute="leading" id="5Xx-RJ-pPl"/>
-                            <constraint firstItem="60p-sW-1fb" firstAttribute="bottom" secondItem="JZP-yR-piK" secondAttribute="bottom" id="AIG-tJ-xLQ"/>
-                            <constraint firstItem="JZP-yR-piK" firstAttribute="top" secondItem="60p-sW-1fb" secondAttribute="top" id="eja-6v-OWx"/>
-                            <constraint firstItem="60p-sW-1fb" firstAttribute="trailing" secondItem="JZP-yR-piK" secondAttribute="trailing" id="gRD-aN-c8c"/>
+                            <constraint firstItem="JZP-yR-piK" firstAttribute="top" secondItem="60p-sW-1fb" secondAttribute="top" id="6kw-jg-Igq"/>
+                            <constraint firstItem="60p-sW-1fb" firstAttribute="bottom" secondItem="JZP-yR-piK" secondAttribute="bottom" id="95k-5L-7qg"/>
+                            <constraint firstItem="JZP-yR-piK" firstAttribute="leading" secondItem="60p-sW-1fb" secondAttribute="leading" id="Dg8-or-MhK"/>
+                            <constraint firstItem="60p-sW-1fb" firstAttribute="trailing" secondItem="JZP-yR-piK" secondAttribute="trailing" id="dI4-EJ-fTF"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="60p-sW-1fb"/>
                     </view>
@@ -50,6 +41,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Add new city" id="hc9-n8-5cr"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="addButtonItem" destination="hc9-n8-5cr" id="E8C-Ta-w9e"/>
                         <outlet property="tableView" destination="JZP-yR-piK" id="E2f-KP-WcA"/>
                     </connections>
                 </viewController>
@@ -62,9 +54,10 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="sCX-lQ-uJd" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="TKj-oL-aWL">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="TKj-oL-aWL">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" name="white"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -76,4 +69,9 @@
             <point key="canvasLocation" x="131.8840579710145" y="61.607142857142854"/>
         </scene>
     </scenes>
+    <resources>
+        <namedColor name="white">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

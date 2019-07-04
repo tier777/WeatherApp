@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol WeatherListCellViewProtocol {
+protocol WeatherListCellViewProtocol: AnyObject {
     
     func display(image: UIImage?)
     func display(city: String?)
@@ -33,22 +33,37 @@ class WeatherListCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        weatherImageView.image = nil
+    }
 }
 
 extension WeatherListCell: WeatherListCellViewProtocol {
     
     func display(image: UIImage?) {
         
-        weatherImageView.image = image
+        DispatchQueue.main.async {
+            
+            self.weatherImageView.image = image
+        }
     }
     
     func display(city: String?) {
         
-        cityLabel.text = city
+        DispatchQueue.main.async {
+            
+            self.cityLabel.text = city
+        }
     }
     
     func display(temperature: String?) {
         
-        temperatureLabel.text = temperature
+        DispatchQueue.main.async {
+            
+            self.temperatureLabel.text = temperature
+        }
     }
 }

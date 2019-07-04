@@ -47,4 +47,27 @@ enum OpenWeatherAPI: APIProtocol, APIItemProtocol {
         
         return URL(string: OpenWeatherAPI.basePath + OpenWeatherAPI.version + path + "&APPID=\(OpenWeatherAPI.APIKey)")!
     }
+    
+    enum OpenWeatherImagesAPI: APIProtocol, APIItemProtocol {
+        
+        static var APIKey = ""
+        static var basePath = "https://openweathermap.org/"
+        static var version = ""
+        
+        case icon(id: String)
+        
+        var path: String {
+            
+            switch self {
+            case .icon(let id):
+                
+                return "img/wn/\(id)@2x.png"
+            }
+        }
+        
+        var url: URL {
+            
+            return URL(string: OpenWeatherImagesAPI.basePath + path)!
+        }
+    }
 }

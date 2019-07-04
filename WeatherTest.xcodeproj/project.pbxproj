@@ -26,6 +26,7 @@
 		8A915A1522CE06C10024B626 /* WeatherListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A915A0B22CE06C10024B626 /* WeatherListRouter.swift */; };
 		8A915A1A22CE06E70024B626 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A915A1722CE06E70024B626 /* Styles.swift */; };
 		8A915A1B22CE06E70024B626 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A915A1822CE06E70024B626 /* LaunchScreen.storyboard */; };
+		8ACD96BE22CE7BD100148D1E /* WeatherImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACD96BD22CE7BD100148D1E /* WeatherImageService.swift */; };
 		8AF5691E22CD76D7006C0F51 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF5691D22CD76D7006C0F51 /* UserDefaultsManager.swift */; };
 		8AF5692122CD7B9B006C0F51 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF5692022CD7B9B006C0F51 /* City.swift */; };
 		8AF5692322CD83EE006C0F51 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF5692222CD83EE006C0F51 /* Weather.swift */; };
@@ -66,6 +67,7 @@
 		8A915A0B22CE06C10024B626 /* WeatherListRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherListRouter.swift; sourceTree = "<group>"; };
 		8A915A1722CE06E70024B626 /* Styles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 		8A915A1922CE06E70024B626 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8ACD96BD22CE7BD100148D1E /* WeatherImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherImageService.swift; sourceTree = "<group>"; };
 		8AF5691D22CD76D7006C0F51 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		8AF5692022CD7B9B006C0F51 /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		8AF5692222CD83EE006C0F51 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 			children = (
 				8A3A1F7222CD0A5C00770E99 /* OpenWeatherAPI.swift */,
 				8A3A1F7422CD119700770E99 /* WeatherService.swift */,
+				8ACD96BD22CE7BD100148D1E /* WeatherImageService.swift */,
 			);
 			path = WeatherService;
 			sourceTree = "<group>";
@@ -203,11 +206,11 @@
 		8A9159F722CE06C10024B626 /* WeatherList */ = {
 			isa = PBXGroup;
 			children = (
-				8A9159F822CE06C10024B626 /* Presenter */,
-				8A9159FA22CE06C10024B626 /* Submodules */,
 				8A915A0522CE06C10024B626 /* View */,
 				8A915A0822CE06C10024B626 /* Interactor */,
+				8A9159F822CE06C10024B626 /* Presenter */,
 				8A915A0A22CE06C10024B626 /* Router */,
+				8A9159FA22CE06C10024B626 /* Submodules */,
 			);
 			path = WeatherList;
 			sourceTree = "<group>";
@@ -231,9 +234,9 @@
 		8A9159FB22CE06C10024B626 /* WeatherListCell */ = {
 			isa = PBXGroup;
 			children = (
-				8A9159FC22CE06C10024B626 /* Presenter */,
 				8A9159FE22CE06C10024B626 /* View */,
 				8A915A0122CE06C10024B626 /* Interactor */,
+				8A9159FC22CE06C10024B626 /* Presenter */,
 				8A915A0322CE06C10024B626 /* Router */,
 			);
 			path = WeatherListCell;
@@ -250,8 +253,8 @@
 		8A9159FE22CE06C10024B626 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				8A9159FF22CE06C10024B626 /* WeatherListCell.swift */,
 				8A915A0022CE06C10024B626 /* WeatherListCell.xib */,
+				8A9159FF22CE06C10024B626 /* WeatherListCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -275,8 +278,8 @@
 		8A915A0522CE06C10024B626 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				8A915A0622CE06C10024B626 /* WeatherListViewController.swift */,
 				8A915A0722CE06C10024B626 /* WeatherList.storyboard */,
+				8A915A0622CE06C10024B626 /* WeatherListViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -422,6 +425,7 @@
 				8AF5691E22CD76D7006C0F51 /* UserDefaultsManager.swift in Sources */,
 				8AF5692322CD83EE006C0F51 /* Weather.swift in Sources */,
 				8A915A1522CE06C10024B626 /* WeatherListRouter.swift in Sources */,
+				8ACD96BE22CE7BD100148D1E /* WeatherImageService.swift in Sources */,
 				8A23F9BB22CCDD19004CD250 /* AppDelegate.swift in Sources */,
 				8AF5692122CD7B9B006C0F51 /* City.swift in Sources */,
 				8A915A1422CE06C10024B626 /* WeatherListInteractor.swift in Sources */,
