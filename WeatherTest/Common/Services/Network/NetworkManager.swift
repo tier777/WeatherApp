@@ -18,7 +18,9 @@ enum NetworkDataError: Error {
 
 protocol NetworkManagerProtocol: AnyObject {
     
-    func get(from url: URL, complition: @escaping (Result<JSON, Error>) -> Void)
+    func get(from url: URL, complition: @escaping (Result<Data, Error>) -> Void)
+    
+    func getJson(from url: URL, complition: @escaping (Result<JSON, Error>) -> Void)
 }
 
 class NetworkManager {
@@ -41,7 +43,26 @@ class NetworkManager {
 
 extension NetworkManager: NetworkManagerProtocol {
     
-    func get(from url: URL, complition: @escaping (Result<JSON, Error>) -> Void) {
+    func get(from url: URL, complition: @escaping (Result<Data, Error>) -> Void) {
+        
+        print("NetworkManager geting from: \(url)")
+        
+        URLSession.shared.dataTask(with: url) {
+            data, response, error in
+            
+            guard let data = data, error == nil else {
+                
+                complition(.failure(error!))
+                
+                return
+            }
+            
+            complition(.success(data))
+            
+            }.resume()
+    }
+    
+    func getJson(from url: URL, complition: @escaping (Result<JSON, Error>) -> Void) {
         
         print("NetworkManager geting from: \(url)")
         

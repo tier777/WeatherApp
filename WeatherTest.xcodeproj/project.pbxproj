@@ -72,6 +72,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8A169FE422CDFF23007E8D67 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8AF5692022CD7B9B006C0F51 /* City.swift */,
+				8AF5692222CD83EE006C0F51 /* Weather.swift */,
+				8AF5692422CD83FD006C0F51 /* Temperature.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		8A23F9AE22CCDD18004CD250 = {
 			isa = PBXGroup;
 			children = (
@@ -161,9 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				8AF5691D22CD76D7006C0F51 /* UserDefaultsManager.swift */,
-				8AF5692022CD7B9B006C0F51 /* City.swift */,
-				8AF5692222CD83EE006C0F51 /* Weather.swift */,
-				8AF5692422CD83FD006C0F51 /* Temperature.swift */,
+				8A169FE422CDFF23007E8D67 /* Models */,
 			);
 			path = DataStack;
 			sourceTree = "<group>";

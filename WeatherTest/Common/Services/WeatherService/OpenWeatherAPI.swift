@@ -24,7 +24,7 @@ private protocol APIItemProtocol {
 enum OpenWeatherAPI: APIProtocol, APIItemProtocol {
     
     static var APIKey = "521a5dd76a9e57367ecd9137fb7b4f29"
-    static var basePath = "api.openweathermap.org/data/"
+    static var basePath = "https://api.openweathermap.org/data/"
     static var version = "2.5/"
     
     case forecastByLocation(latitude: Double, longitude: Double)
@@ -45,6 +45,6 @@ enum OpenWeatherAPI: APIProtocol, APIItemProtocol {
     
     var url: URL {
         
-        return URL(string: OpenWeatherAPI.basePath + path + "&APPID=\(OpenWeatherAPI.APIKey)")!
+        return URL(string: OpenWeatherAPI.basePath + OpenWeatherAPI.version + path + "&APPID=\(OpenWeatherAPI.APIKey)")!
     }
 }
