@@ -15,6 +15,7 @@ struct City {
     var isCurrent: Bool = false
     var weather: [Weather] = []
     let temperature: Temperature?
+    let wind: Wind?
 }
 
 extension City: Codable {
@@ -26,6 +27,7 @@ extension City: Codable {
         case isCurrent = "isCurrent"
         case weather = "weather"
         case temperature = "main"
+        case wind = "wind"
     }
     
     init(from decoder: Decoder) throws {
@@ -36,6 +38,7 @@ extension City: Codable {
         isCurrent = try container.decodeIfPresent(Bool.self, forKey: .isCurrent) ?? false
         weather = try container.decodeIfPresent([Weather].self, forKey: .weather) ?? []
         temperature = try container.decodeIfPresent(Temperature.self, forKey: .temperature)
+        wind = try container.decodeIfPresent(Wind.self, forKey: .wind)
     }
     
     func encode(to encoder: Encoder) throws {
@@ -46,5 +49,6 @@ extension City: Codable {
         try container.encode(isCurrent, forKey: .isCurrent)
         try container.encode(weather, forKey: .weather)
         try container.encode(temperature, forKey: .temperature)
+        try container.encode(wind, forKey: .wind)
     }
 }
