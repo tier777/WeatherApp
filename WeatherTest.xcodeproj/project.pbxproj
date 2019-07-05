@@ -151,9 +151,9 @@
 			children = (
 				8A23F9C622CCDD1A004CD250 /* Info.plist */,
 				8A23F9BA22CCDD19004CD250 /* AppDelegate.swift */,
-				8A915A1622CE06E70024B626 /* Resources */,
 				8A3A1F6E22CD080600770E99 /* Common */,
 				8A9159F622CE06C10024B626 /* Modules */,
+				8A915A1622CE06E70024B626 /* Resources */,
 			);
 			path = WeatherTest;
 			sourceTree = "<group>";
