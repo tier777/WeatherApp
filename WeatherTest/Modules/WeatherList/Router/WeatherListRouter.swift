@@ -10,11 +10,33 @@ import UIKit
 
 protocol WeatherListRouterProtocol {
     
+    static func buildWeatherListModule() -> UIViewController
+    
     func presentWeatherDetailsModule(from view: WeatherListViewProtocol, for city: City)
     func presentAddCityModule(from view: WeatherListViewProtocol, delegate: AddCityAlertControllerDelegate?)
 }
 
 class WeatherListRouter: WeatherListRouterProtocol {
+    
+    static func buildWeatherListModule() -> UIViewController {
+        
+        guard let navigationController = AppStoryboard.weatherList.build().instantiateInitialViewController() as? UINavigationController, let weatherListViewController = navigationController.topViewController as? WeatherListViewController else {
+            
+            fatalError("Can't build WeatherList module.")
+        }
+        
+        let presenter = WeatherListPresenter()
+        let interactor = WeatherListInteractor()
+        let router = WeatherListRouter()
+        
+        weatherListViewController.presenter = presenter
+        presenter.view = weatherListViewController
+        presenter.interactor = interactor
+        presenter.router = router
+        interactor.presenter = presenter
+        
+        return navigationController
+    }
     
     func presentWeatherDetailsModule(from view: WeatherListViewProtocol, for city: City) {
         

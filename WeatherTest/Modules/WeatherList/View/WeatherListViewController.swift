@@ -34,16 +34,6 @@ class WeatherListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let p = WeatherListPresenter()
-        let interactor = WeatherListInteractor()
-        let router = WeatherListRouter()
-        interactor.presenter = p
-        p.interactor = interactor
-        p.view = self
-        p.router = router
-        
-        presenter = p
-        
         setupViews()
     }
     
