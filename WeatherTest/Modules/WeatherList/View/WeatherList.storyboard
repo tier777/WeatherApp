@@ -38,7 +38,11 @@
                         <viewLayoutGuide key="safeArea" id="60p-sW-1fb"/>
                     </view>
                     <navigationItem key="navigationItem" id="AkG-dV-2b8">
-                        <barButtonItem key="rightBarButtonItem" title="Add new city" id="hc9-n8-5cr"/>
+                        <barButtonItem key="rightBarButtonItem" title="Add new city" id="hc9-n8-5cr">
+                            <connections>
+                                <action selector="addCityButtonTapped:" destination="Bte-UN-04b" id="rqt-He-CT5"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="addButtonItem" destination="hc9-n8-5cr" id="E8C-Ta-w9e"/>

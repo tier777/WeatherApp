@@ -21,6 +21,8 @@ protocol WeatherListPresenterProtocol: AnyObject {
     func registerWeatherListCellFor(tableView: UITableView)
     func getWeatherListCellFor(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell?
     func cellTappedAt(indexPath: IndexPath)
+    
+    func addCityButtonTapped()
 }
 
 class WeatherListPresenter: WeatherListPresenterProtocol {
@@ -66,6 +68,13 @@ class WeatherListPresenter: WeatherListPresenterProtocol {
         
         router?.presentWeatherDetailsModule(from: view, for: city)
     }
+    
+    func addCityButtonTapped() {
+        
+        guard let view = view else { return }
+        
+        router?.presentAddCityModule(from: view, delegate: self)
+    }
 }
 
 extension WeatherListPresenter: WeatherListInteractorDelegate {
@@ -93,6 +102,19 @@ extension WeatherListPresenter: WeatherListInteractorDelegate {
     
     func on(error: Error) {
         
-        //TODO: show error
+        if let dataError = error as? NetworkDataError, dataError == .noContentError {
+            
+           view?.showAlertFor(error: "City not found")
+        }
+    }
+}
+
+extension WeatherListPresenter: AddCityAlertControllerDelegate {
+    
+    func addButtonTapped(fieldInput: String?) {
+        
+        guard let name = fieldInput else { return }
+        
+        interactor?.addCityBy(name: name)
     }
 }

@@ -41,7 +41,7 @@ enum OpenWeatherAPI: APIProtocol, APIItemProtocol {
             
         case .forecastByCity(let name):
             
-            return "weather?q=\(name)" + units
+            return "weather?q=\(name.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? name)" + units
         }
     }
     

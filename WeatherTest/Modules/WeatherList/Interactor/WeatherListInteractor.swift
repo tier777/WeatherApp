@@ -38,6 +38,11 @@ class WeatherListInteractor: WeatherListInteractorProtocol {
     
     var cities: [City] = []
     
+    private func saveCities() {
+        
+        defaultsManager.save(cities: cities)
+    }
+    
     func fetchCities() {
         
         cities = defaultsManager.getCities()
@@ -75,7 +80,7 @@ class WeatherListInteractor: WeatherListInteractorProtocol {
                                 self.cities.insert(city, at: 0)
                             }
                             
-                            self.defaultsManager.save(cities: self.cities)
+                            self.saveCities()
                             
                             self.presenter?.didAdd(city: city)
                             
@@ -102,6 +107,10 @@ class WeatherListInteractor: WeatherListInteractorProtocol {
             
             switch result {
             case .success(let city):
+                
+                self.cities.append(city)
+                
+                self.saveCities()
                 
                 self.presenter?.didAdd(city: city)
                 

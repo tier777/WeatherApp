@@ -13,6 +13,7 @@ protocol WeatherListViewProtocol: AnyObject {
     var presenter: WeatherListPresenterProtocol? { get set }
     
     func reloadTableView()
+    func showAlertFor(error: String)
 }
 
 class WeatherListViewController: UIViewController {
@@ -59,6 +60,11 @@ class WeatherListViewController: UIViewController {
         
         presenter?.registerWeatherListCellFor(tableView: tableView)
     }
+    
+    @IBAction func addCityButtonTapped(_ sender: Any) {
+        
+        presenter?.addCityButtonTapped()
+    }
 }
 
 extension WeatherListViewController: WeatherListViewProtocol {
@@ -68,6 +74,17 @@ extension WeatherListViewController: WeatherListViewProtocol {
         DispatchQueue.main.async {
             
             self.tableView.reloadData()
+        }
+    }
+    
+    func showAlertFor(error: String) {
+        
+        DispatchQueue.main.async {
+            
+            let alertController = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+            
+            self.present(alertController, animated: true)
         }
     }
 }

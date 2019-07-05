@@ -14,6 +14,14 @@ enum NetworkDataError: Error {
     
     case noContentError
     case jsonParsingError
+    
+    var localizedDescription: String {
+        
+        switch self {
+        case .noContentError: return "No content."
+        case .jsonParsingError: return "Response parsing error."
+        }
+    }
 }
 
 protocol NetworkManagerProtocol: AnyObject {
@@ -39,16 +47,31 @@ class NetworkManager {
         
         return .success(json)
     }
+    
+    private func check(response: URLResponse?) -> Error? {
+        
+        if let httpResponse = response as? HTTPURLResponse {
+            
+            return httpResponse.statusCode == 404 ? NetworkDataError.noContentError : nil
+        }
+        
+        return nil
+    }
 }
 
 extension NetworkManager: NetworkManagerProtocol {
     
     func get(from url: URL, complition: @escaping (Result<Data, Error>) -> Void) {
         
-        print("NetworkManager geting from: \(url)")
-        
         URLSession.shared.dataTask(with: url) {
             data, response, error in
+            
+            if let statusError = self.check(response: response) {
+                
+                complition(.failure(statusError))
+                
+                return
+            }
             
             guard let data = data, error == nil else {
                 
@@ -64,10 +87,15 @@ extension NetworkManager: NetworkManagerProtocol {
     
     func getJson(from url: URL, complition: @escaping (Result<JSON, Error>) -> Void) {
         
-        print("NetworkManager geting from: \(url)")
-        
         URLSession.shared.dataTask(with: url) {
             data, response, error in
+            
+            if let statusError = self.check(response: response) {
+                
+                complition(.failure(statusError))
+                
+                return
+            }
             
             guard error == nil else {
                 
