@@ -20,7 +20,9 @@ protocol WeatherListPresenterProtocol: AnyObject {
     
     func registerWeatherListCellFor(tableView: UITableView)
     func getWeatherListCellFor(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell?
-    func cellTappedAt(indexPath: IndexPath)
+    func cellTapped(at indexPath: IndexPath)
+    func canEditCell(at indexPath: IndexPath) -> Bool
+    func cellDeleteButtonTapped(at indexPath: IndexPath)
     
     func addCityButtonTapped()
 }
@@ -31,7 +33,7 @@ class WeatherListPresenter {
     var interactor: WeatherListInteractorProtocol?
     var router: WeatherListRouterProtocol?
     
-    private func getCityFor(indexPath: IndexPath) -> City? {
+    private func getCity(for indexPath: IndexPath) -> City? {
         
         guard citiesCount != 0, indexPath.row < citiesCount, let city = interactor?.cities[indexPath.row] else { return nil }
         
@@ -60,14 +62,28 @@ extension WeatherListPresenter: WeatherListPresenterProtocol {
     
     func getWeatherListCellFor(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell? {
         
-        guard let city = getCityFor(indexPath: indexPath) else { return nil }
+        guard let city = getCity(for: indexPath) else { return nil }
         
         return WeatherListCellRouter.buildWeatherListCellModule(city: city, tableView: tableView, indexPath: indexPath)
     }
     
-    func cellTappedAt(indexPath: IndexPath) {
+    func canEditCell(at indexPath: IndexPath) -> Bool {
         
-        guard let view = view, let city = getCityFor(indexPath: indexPath) else { return }
+        guard let city = getCity(for: indexPath) else { return false }
+        
+        return !city.isCurrent
+    }
+    
+    func cellDeleteButtonTapped(at indexPath: IndexPath) {
+        
+        guard let city = getCity(for: indexPath) else { return }
+        
+        interactor?.delete(city: city)
+    }
+    
+    func cellTapped(at indexPath: IndexPath) {
+        
+        guard let view = view, let city = getCity(for: indexPath) else { return }
         
         router?.presentWeatherDetailsModule(from: view, for: city)
     }
@@ -119,6 +135,10 @@ extension WeatherListPresenter: WeatherListInteractorDelegate {
             
             view?.reloadTableViewCell(at: IndexPath(row: index, section: 0))
         }
+    }
+    
+    func didDelete(city: City) {
+        
     }
     
     func on(error: Error) {

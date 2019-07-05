@@ -139,8 +139,29 @@ extension WeatherListViewController: UITableViewDataSource {
 
 extension WeatherListViewController: UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        
+        guard let canEdit = presenter?.canEditCell(at: indexPath) else { return false }
+        
+        return canEdit
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        
+        guard let _ = presenter?.canEditCell(at: indexPath) else { return .none }
+        
+        return .delete
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        presenter?.cellDeleteButtonTapped(at: indexPath)
+        
+        tableView.deleteRows(at: [indexPath], with: .automatic)
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        presenter?.cellTappedAt(indexPath: indexPath)
+        presenter?.cellTapped(at: indexPath)
     }
 }

@@ -19,6 +19,7 @@ protocol WeatherListInteractorProtocol: AnyObject {
     func addCityBy(name: String)
     func updateAllCities()
     func update(city: City)
+    func delete(city: City)
 }
 
 protocol WeatherListInteractorDelegate: AnyObject {
@@ -27,6 +28,7 @@ protocol WeatherListInteractorDelegate: AnyObject {
     
     func willUpdate(city: City)
     func didUpdate(city: City)
+    func didDelete(city: City)
     
     func willAddCity()
     func didAdd(city: City?)
@@ -165,5 +167,14 @@ extension WeatherListInteractor: WeatherListInteractorProtocol {
                 self.presenter?.on(error: error)
             }
         })
+    }
+    
+    func delete(city: City) {
+        
+        guard let index = cities.firstIndex(where: { $0.id == city.id }) else { return }
+        
+        cities.remove(at: index)
+        
+        presenter?.didDelete(city: city)
     }
 }
