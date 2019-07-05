@@ -27,13 +27,24 @@ class WeatherListViewController: UIViewController {
         
         let p = WeatherListPresenter()
         let interactor = WeatherListInteractor()
+        let router = WeatherListRouter()
         interactor.presenter = p
         p.interactor = interactor
         p.view = self
+        p.router = router
         
         presenter = p
         
         setupViews()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let indexPathForSelectedRow = tableView.indexPathForSelectedRow {
+            
+            tableView.deselectRow(at: indexPathForSelectedRow, animated: true)
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -61,11 +72,6 @@ extension WeatherListViewController: WeatherListViewProtocol {
     }
 }
 
-extension WeatherListViewController: UITableViewDelegate {
-    
-    
-}
-
 extension WeatherListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -76,5 +82,13 @@ extension WeatherListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         return presenter?.getWeatherListCellFor(tableView: tableView, indexPath: indexPath) ?? UITableViewCell()
+    }
+}
+
+extension WeatherListViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        presenter?.cellTappedAt(indexPath: indexPath)
     }
 }

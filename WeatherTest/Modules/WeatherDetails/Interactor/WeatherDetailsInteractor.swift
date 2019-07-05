@@ -1,32 +1,30 @@
 //
-//  WeatherListCellInteractor.swift
+//  WeatherDetailsInteractor.swift
 //  WeatherTest
 //
-//  Created by Nikita Gorobets on 03/07/2019.
+//  Created by Nikita Gorobets on 05/07/2019.
 //  Copyright © 2019 ng. All rights reserved.
 //
 
 import Foundation
 import class UIKit.UIImage
 
-protocol WeatherListCellInteractorProtocol: AnyObject {
+protocol WeatherDetailsInteractorProtocol: AnyObject {
     
-    var presenter: WeatherListCellInteractorDelegate? { get set }
+    var presenter: WeatherDetailsInteractorDelegate? { get set }
     
     var city: City? { get }
-    
-    func loadImage()
 }
 
-protocol WeatherListCellInteractorDelegate: AnyObject {
+protocol WeatherDetailsInteractorDelegate: AnyObject {
     
     func didSet(city: City?)
     func didLoad(image: UIImage?)
 }
 
-class WeatherListCellInteractor: WeatherListCellInteractorProtocol {
+class WeatherDetailsInteractor: WeatherDetailsInteractorProtocol {
     
-    weak var presenter: WeatherListCellInteractorDelegate?
+    weak var presenter: WeatherDetailsInteractorDelegate?
     
     private let imageService = WeatherImageService.shared
     

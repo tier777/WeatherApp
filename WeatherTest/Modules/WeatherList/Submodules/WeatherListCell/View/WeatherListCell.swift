@@ -10,6 +10,8 @@ import UIKit
 
 protocol WeatherListCellViewProtocol: AnyObject {
     
+    var presenter: WeatherListCellPresenterProtocol? { get set }
+    
     func display(image: UIImage?)
     func display(city: String?)
     func display(temperature: String?)
