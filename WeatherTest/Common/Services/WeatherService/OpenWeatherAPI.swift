@@ -32,14 +32,16 @@ enum OpenWeatherAPI: APIProtocol, APIItemProtocol {
     
     var path: String {
         
+        let units = "&units=metric"
+        
         switch self {
         case .forecastByLocation(let latitude, let longitude):
             
-            return "weather?lat=\(latitude)&lon=\(longitude)"
+            return "weather?lat=\(latitude)&lon=\(longitude)" + units
             
         case .forecastByCity(let name):
             
-            return "weather?q=\(name)"
+            return "weather?q=\(name)" + units
         }
     }
     
