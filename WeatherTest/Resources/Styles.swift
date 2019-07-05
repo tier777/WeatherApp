@@ -27,5 +27,9 @@ enum AppColors: String {
 
 struct AppFonts {
     
+    static let title1 = UIFont.systemFont(ofSize: 32, weight: .bold)
+    static let title2 = UIFont.systemFont(ofSize: 32, weight: .semibold)
+    static let title3 = UIFont.systemFont(ofSize: 32, weight: .medium)
+    static let subtitle = UIFont.systemFont(ofSize: 24, weight: .bold)
     static let common = UIFont.systemFont(ofSize: 18, weight: .semibold)
 }

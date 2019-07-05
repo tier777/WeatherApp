@@ -8,6 +8,11 @@
 
 import UIKit
 
+protocol WindDirectionViewProtocol: AnyObject {
+    
+    func rotateTo(angle: CGFloat, animated: Bool)
+}
+
 class WindDirectionView: UIView {
     
     override func draw(_ rect: CGRect) {
@@ -31,6 +36,9 @@ class WindDirectionView: UIView {
         AppColors.white.uiColor.setStroke()
         path.stroke()
     }
+}
+
+extension WindDirectionView: WindDirectionViewProtocol {
     
     func rotateTo(angle: CGFloat, animated: Bool) {
         

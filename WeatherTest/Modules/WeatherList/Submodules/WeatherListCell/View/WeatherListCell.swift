@@ -21,9 +21,9 @@ class WeatherListCell: UITableViewCell {
     
     var presenter: WeatherListCellPresenterProtocol?
     
-    @IBOutlet weak var weatherImageView: UIImageView!
-    @IBOutlet weak var cityLabel: UILabel!
-    @IBOutlet weak var temperatureLabel: UILabel!
+    @IBOutlet private weak var weatherImageView: UIImageView!
+    @IBOutlet private weak var cityLabel: UILabel!
+    @IBOutlet private weak var temperatureLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
