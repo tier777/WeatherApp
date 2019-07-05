@@ -6,13 +6,14 @@
 //  Copyright © 2019 ng. All rights reserved.
 //
 
-import UIKit
+import Foundation
+import class UIKit.UIImage
 
 protocol WeatherListCellInteractorProtocol: AnyObject {
     
     var presenter: WeatherListCellInteractorDelegate? { get set }
     
-    var city: City? { get set }
+    var city: City? { get }
     
     func loadImage()
 }

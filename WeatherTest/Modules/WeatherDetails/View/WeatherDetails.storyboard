@@ -22,7 +22,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="t7q-wi-9mN">
                                 <rect key="frame" x="120.5" y="187" width="173.5" height="458"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WgO-pJ-3Sm">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WgO-pJ-3Sm">
                                         <rect key="frame" x="56" y="0.0" width="61" height="38.5"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
                                         <color key="textColor" name="white"/>
@@ -31,14 +31,14 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="2Cc-x7-g9H">
                                         <rect key="frame" x="0.0" y="70.5" width="173.5" height="182.5"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QcH-qy-Ixs">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QcH-qy-Ixs">
                                                 <rect key="frame" x="22.5" y="0.0" width="128" height="128"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="128" id="IIU-Dq-lkm"/>
                                                     <constraint firstAttribute="width" constant="128" id="YaM-qx-3rM"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="temperature" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AdK-eY-GOC">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="temperature" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AdK-eY-GOC">
                                                 <rect key="frame" x="0.0" y="144" width="173.5" height="38.5"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="32"/>
                                                 <color key="textColor" name="white"/>
@@ -49,10 +49,10 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="42i-Uo-HvM">
                                         <rect key="frame" x="6" y="285" width="161.5" height="173"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V7e-9q-Wyg">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V7e-9q-Wyg" customClass="WindDirectionView" customModule="WeatherTest" customModuleProvider="target">
                                                 <rect key="frame" x="16.5" y="0.0" width="128" height="128"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qL2-K4-SLu">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qL2-K4-SLu">
                                                         <rect key="frame" x="55.5" y="49.5" width="17.5" height="29"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
                                                         <color key="textColor" name="white"/>
@@ -67,7 +67,7 @@
                                                     <constraint firstItem="qL2-K4-SLu" firstAttribute="centerX" secondItem="V7e-9q-Wyg" secondAttribute="centerX" id="uXA-js-nHl"/>
                                                 </constraints>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wind Direction" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GQU-2C-UjT">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wind Direction" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GQU-2C-UjT">
                                                 <rect key="frame" x="0.0" y="144" width="161.5" height="29"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
                                                 <color key="textColor" name="white"/>
@@ -86,6 +86,9 @@
                                         <state key="normal" title="Close">
                                             <color key="titleColor" name="white"/>
                                         </state>
+                                        <connections>
+                                            <action selector="closeButtonTapped:" destination="tAO-hL-hBB" eventType="touchUpInside" id="X1Z-x8-9VL"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -106,6 +109,15 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hvY-hn-3X5"/>
                     </view>
+                    <connections>
+                        <outlet property="cityLabel" destination="WgO-pJ-3Sm" id="2aU-Oj-UH6"/>
+                        <outlet property="closeButton" destination="0Gg-DC-b22" id="tKy-bJ-HlU"/>
+                        <outlet property="temperatureLabel" destination="AdK-eY-GOC" id="luX-G0-jcf"/>
+                        <outlet property="weatherImageView" destination="QcH-qy-Ixs" id="djl-1q-AbN"/>
+                        <outlet property="windDirectionLabel" destination="qL2-K4-SLu" id="TWr-sq-4Iu"/>
+                        <outlet property="windDirectionTitleLabel" destination="GQU-2C-UjT" id="8qS-Gp-9vb"/>
+                        <outlet property="windDirectionView" destination="V7e-9q-Wyg" id="gW2-Lr-hlA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HfX-ma-0xl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

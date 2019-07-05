@@ -30,13 +30,11 @@ class WeatherListCellRouter: WeatherListCellRouterProtocol {
         let interactor = WeatherListCellInteractor()
         let presenter = WeatherListCellPresenter()
         
+        cell.presenter = presenter
         presenter.view = cell
         presenter.interactor = interactor
-        
         interactor.presenter = presenter
         interactor.city = city
-        
-        cell.presenter = presenter
         
         return cell
     }
