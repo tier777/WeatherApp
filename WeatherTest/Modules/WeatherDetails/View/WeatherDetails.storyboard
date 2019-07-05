@@ -51,20 +51,10 @@
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V7e-9q-Wyg" customClass="WindDirectionView" customModule="WeatherTest" customModuleProvider="target">
                                                 <rect key="frame" x="16.5" y="0.0" width="128" height="128"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qL2-K4-SLu">
-                                                        <rect key="frame" x="55.5" y="49.5" width="17.5" height="29"/>
-                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
-                                                        <color key="textColor" name="white"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="128" id="Ri9-SC-iva"/>
                                                     <constraint firstAttribute="height" constant="128" id="Xza-aQ-73t"/>
-                                                    <constraint firstItem="qL2-K4-SLu" firstAttribute="centerY" secondItem="V7e-9q-Wyg" secondAttribute="centerY" id="fmM-cY-orx"/>
-                                                    <constraint firstItem="qL2-K4-SLu" firstAttribute="centerX" secondItem="V7e-9q-Wyg" secondAttribute="centerX" id="uXA-js-nHl"/>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wind Direction" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GQU-2C-UjT">
@@ -77,6 +67,12 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N/A" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qL2-K4-SLu">
+                                <rect key="frame" x="186" y="521.5" width="42" height="29"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
+                                <color key="textColor" name="white"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qvd-g1-bhv" userLabel="Wrap View">
                                 <rect key="frame" x="183.5" y="645" width="47" height="217"/>
                                 <subviews>
@@ -102,6 +98,8 @@
                         <color key="backgroundColor" name="tintBlue"/>
                         <constraints>
                             <constraint firstItem="t7q-wi-9mN" firstAttribute="centerY" secondItem="u5h-JT-nCd" secondAttribute="centerY" constant="-32" id="G52-jv-nbI"/>
+                            <constraint firstItem="qL2-K4-SLu" firstAttribute="centerY" secondItem="V7e-9q-Wyg" secondAttribute="centerY" id="bwV-UM-XfU"/>
+                            <constraint firstItem="qL2-K4-SLu" firstAttribute="centerX" secondItem="V7e-9q-Wyg" secondAttribute="centerX" id="j7b-ub-tIE"/>
                             <constraint firstItem="Qvd-g1-bhv" firstAttribute="centerX" secondItem="u5h-JT-nCd" secondAttribute="centerX" id="m7m-O1-Rbl"/>
                             <constraint firstItem="hvY-hn-3X5" firstAttribute="bottom" secondItem="Qvd-g1-bhv" secondAttribute="bottom" id="nlD-rK-7JP"/>
                             <constraint firstItem="t7q-wi-9mN" firstAttribute="centerX" secondItem="u5h-JT-nCd" secondAttribute="centerX" id="tNB-BC-J8j"/>

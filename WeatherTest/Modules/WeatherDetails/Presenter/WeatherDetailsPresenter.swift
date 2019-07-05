@@ -14,10 +14,13 @@ protocol WeatherDetailsPresenterProtocol: AnyObject {
     var interactor: WeatherDetailsInteractorProtocol? { get set }
     var router: WeatherDetailsRouterProtocol? { get set }
     
+    func viewDidAppear()
+    
     func closeButtonTapped()
     
     func getCityName() -> String
     func getTemperature() -> String
+    func getWindDirection() -> String
 }
 
 class WeatherDetailsPresenter: WeatherDetailsPresenterProtocol {
@@ -25,6 +28,14 @@ class WeatherDetailsPresenter: WeatherDetailsPresenterProtocol {
     weak var view: WeatherDetailsViewProtocol?
     var interactor: WeatherDetailsInteractorProtocol?
     var router: WeatherDetailsRouterProtocol?
+    
+    func viewDidAppear() {
+        
+        if let angle = interactor?.city?.wind?.direction {
+            
+            view?.showWindDirection(angle: CGFloat(angle))
+        }
+    }
     
     func closeButtonTapped() {
         
@@ -44,6 +55,13 @@ class WeatherDetailsPresenter: WeatherDetailsPresenterProtocol {
         
         return "\(Int(temperature))°C"
     }
+    
+    func getWindDirection() -> String {
+        
+        guard let degrees = interactor?.city?.wind?.direction else { return "" }
+        
+        return WindDirections(windDegrees: degrees).abbreviation
+    }
 }
 
 extension WeatherDetailsPresenter: WeatherDetailsInteractorDelegate {
@@ -52,6 +70,7 @@ extension WeatherDetailsPresenter: WeatherDetailsInteractorDelegate {
         
         view?.display(city: getCityName())
         view?.display(temperature: getTemperature())
+        view?.displayWind(direction: getWindDirection())
     }
     
     func didLoad(image: UIImage?) {

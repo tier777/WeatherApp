@@ -15,6 +15,8 @@ protocol WeatherDetailsViewProtocol: AnyObject {
     func display(image: UIImage?)
     func display(city: String?)
     func display(temperature: String?)
+    func displayWind(direction: String?)
+    func showWindDirection(angle: CGFloat)
 }
 
 class WeatherDetailsViewController: UIViewController {
@@ -31,6 +33,12 @@ class WeatherDetailsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        presenter?.viewDidAppear()
     }
     
     @IBAction func closeButtonTapped(_ sender: Any) {
@@ -64,9 +72,20 @@ extension WeatherDetailsViewController: WeatherDetailsViewProtocol {
             self.temperatureLabel.text = temperature
         }
     }
-}
-
-class WindDirectionView: UIView {
     
-    //TODO: it later
+    func displayWind(direction: String?) {
+        
+        DispatchQueue.main.async {
+            
+            self.windDirectionLabel.text = direction
+        }
+    }
+    
+    func showWindDirection(angle: CGFloat) {
+        
+        DispatchQueue.main.async {
+            
+            self.windDirectionView.rotateTo(angle: angle, animated: true)
+        }
+    }
 }
