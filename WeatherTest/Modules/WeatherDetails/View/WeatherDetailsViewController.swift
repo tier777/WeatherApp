@@ -23,22 +23,39 @@ class WeatherDetailsViewController: UIViewController {
     
     var presenter: WeatherDetailsPresenterProtocol?
     
-    @IBOutlet weak var cityLabel: UILabel!
-    @IBOutlet weak var weatherImageView: UIImageView!
-    @IBOutlet weak var temperatureLabel: UILabel!
-    @IBOutlet weak var windDirectionView: WindDirectionView!
-    @IBOutlet weak var windDirectionLabel: UILabel!
-    @IBOutlet weak var windDirectionTitleLabel: UILabel!
-    @IBOutlet weak var closeButton: UIButton!
+    @IBOutlet private weak var cityLabel: UILabel!
+    @IBOutlet private weak var weatherImageView: UIImageView!
+    @IBOutlet private weak var temperatureLabel: UILabel!
+    @IBOutlet private weak var windDirectionView: WindDirectionView!
+    @IBOutlet private weak var windDirectionLabel: UILabel!
+    @IBOutlet private weak var windDirectionTitleLabel: UILabel!
+    @IBOutlet private weak var closeButton: UIButton!
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        
+        return .lightContent
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupViews()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         presenter?.viewDidAppear()
+    }
+    
+    private func setupViews() {
+        
+        cityLabel.font = AppFonts.title1
+        temperatureLabel.font = AppFonts.title3
+        windDirectionLabel.font = AppFonts.title2
+        windDirectionTitleLabel.font = AppFonts.subtitle
+        
+        closeButton.titleLabel?.font = AppFonts.common
     }
     
     @IBAction func closeButtonTapped(_ sender: Any) {

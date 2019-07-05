@@ -53,9 +53,7 @@ class WeatherImageService: WeatherImageServiceProtocol {
                 
                 complition(id, image)
                 
-            case .failure(let error):
-                
-                print("WeatherImageService can't download image: \(id) error: \(error.localizedDescription)")
+            case .failure:
                 
                 complition(id, nil)
             }

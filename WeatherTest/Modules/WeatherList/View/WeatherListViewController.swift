@@ -13,28 +13,26 @@ protocol WeatherListViewProtocol: AnyObject {
     var presenter: WeatherListPresenterProtocol? { get set }
     
     func reloadTableView()
+    func reloadTableViewCell(at indexPath: IndexPath)
     func showAlertFor(error: String)
+    func showIndicatorView()
+    func dismissIndicatorView()
 }
 
 class WeatherListViewController: UIViewController {
     
     var presenter: WeatherListPresenterProtocol?
     
-    @IBOutlet weak var addButtonItem: UIBarButtonItem!
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet private weak var addButtonItem: UIBarButtonItem!
+    @IBOutlet private weak var tableView: UITableView!
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        
+        return .default
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let p = WeatherListPresenter()
-        let interactor = WeatherListInteractor()
-        let router = WeatherListRouter()
-        interactor.presenter = p
-        p.interactor = interactor
-        p.view = self
-        p.router = router
-        
-        presenter = p
         
         setupViews()
     }
@@ -77,6 +75,17 @@ extension WeatherListViewController: WeatherListViewProtocol {
         }
     }
     
+    func reloadTableViewCell(at indexPath: IndexPath) {
+        
+        DispatchQueue.main.async {
+            
+            if let indexPathsForVisibleRows = self.tableView.indexPathsForVisibleRows, indexPathsForVisibleRows.contains(indexPath) {
+                
+                self.tableView.reloadRows(at: [indexPath], with: .none)
+            }
+        }
+    }
+    
     func showAlertFor(error: String) {
         
         DispatchQueue.main.async {
@@ -85,6 +94,22 @@ extension WeatherListViewController: WeatherListViewProtocol {
             alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
             
             self.present(alertController, animated: true)
+        }
+    }
+    
+    func showIndicatorView() {
+        
+        DispatchQueue.main.async {
+            
+            IndicatorOverlayView.show(for: self)
+        }
+    }
+    
+    func dismissIndicatorView() {
+        
+        DispatchQueue.main.async {
+            
+            IndicatorOverlayView.dismiss(for: self)
         }
     }
 }
@@ -104,8 +129,29 @@ extension WeatherListViewController: UITableViewDataSource {
 
 extension WeatherListViewController: UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        
+        guard let canEdit = presenter?.canEditCell(at: indexPath) else { return false }
+        
+        return canEdit
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        
+        guard let _ = presenter?.canEditCell(at: indexPath) else { return .none }
+        
+        return .delete
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        presenter?.cellDeleteButtonTapped(at: indexPath)
+        
+        tableView.deleteRows(at: [indexPath], with: .automatic)
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        presenter?.cellTappedAt(indexPath: indexPath)
+        presenter?.cellTapped(at: indexPath)
     }
 }

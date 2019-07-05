@@ -20,8 +20,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JZP-yR-piK">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="YL0-ny-DcG" userLabel="Footer">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="48"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                </view>
                                 <connections>
                                     <outlet property="dataSource" destination="Bte-UN-04b" id="9IU-s1-EYt"/>
                                     <outlet property="delegate" destination="Bte-UN-04b" id="67E-Me-oZx"/>
@@ -31,7 +35,7 @@
                         <color key="backgroundColor" name="white"/>
                         <constraints>
                             <constraint firstItem="JZP-yR-piK" firstAttribute="top" secondItem="60p-sW-1fb" secondAttribute="top" id="6kw-jg-Igq"/>
-                            <constraint firstItem="60p-sW-1fb" firstAttribute="bottom" secondItem="JZP-yR-piK" secondAttribute="bottom" id="95k-5L-7qg"/>
+                            <constraint firstAttribute="bottom" secondItem="JZP-yR-piK" secondAttribute="bottom" id="95k-5L-7qg"/>
                             <constraint firstItem="JZP-yR-piK" firstAttribute="leading" secondItem="60p-sW-1fb" secondAttribute="leading" id="Dg8-or-MhK"/>
                             <constraint firstItem="60p-sW-1fb" firstAttribute="trailing" secondItem="JZP-yR-piK" secondAttribute="trailing" id="dI4-EJ-fTF"/>
                         </constraints>

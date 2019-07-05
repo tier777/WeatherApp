@@ -99,8 +99,6 @@ extension LocationManager: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         
-        print("LocationManager error: \(error.localizedDescription)")
-        
         if let complition = locationUpdateComplition {
             
             complition(.failure(error))

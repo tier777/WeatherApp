@@ -20,29 +20,34 @@ protocol WeatherListPresenterProtocol: AnyObject {
     
     func registerWeatherListCellFor(tableView: UITableView)
     func getWeatherListCellFor(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell?
-    func cellTappedAt(indexPath: IndexPath)
+    func cellTapped(at indexPath: IndexPath)
+    func canEditCell(at indexPath: IndexPath) -> Bool
+    func cellDeleteButtonTapped(at indexPath: IndexPath)
     
     func addCityButtonTapped()
 }
 
-class WeatherListPresenter: WeatherListPresenterProtocol {
+class WeatherListPresenter {
     
     weak var view: WeatherListViewProtocol?
     var interactor: WeatherListInteractorProtocol?
     var router: WeatherListRouterProtocol?
     
-    var citiesCount: Int {
-        
-        return interactor?.cities.count ?? 0
-    }
-    
-    private func getCityFor(indexPath: IndexPath) -> City? {
+    private func getCity(for indexPath: IndexPath) -> City? {
         
         guard citiesCount != 0, indexPath.row < citiesCount, let city = interactor?.cities[indexPath.row] else { return nil }
         
         return city
     }
+}
+
+extension WeatherListPresenter: WeatherListPresenterProtocol {
     
+    var citiesCount: Int {
+        
+        return interactor?.cities.count ?? 0
+    }
+
     func viewDidAppear() {
         
         guard let interactor = interactor, interactor.cities.isEmpty else { return }
@@ -57,14 +62,28 @@ class WeatherListPresenter: WeatherListPresenterProtocol {
     
     func getWeatherListCellFor(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell? {
         
-        guard let city = getCityFor(indexPath: indexPath) else { return nil }
+        guard let city = getCity(for: indexPath) else { return nil }
         
         return WeatherListCellRouter.buildWeatherListCellModule(city: city, tableView: tableView, indexPath: indexPath)
     }
     
-    func cellTappedAt(indexPath: IndexPath) {
+    func canEditCell(at indexPath: IndexPath) -> Bool {
         
-        guard let view = view, let city = getCityFor(indexPath: indexPath) else { return }
+        guard let city = getCity(for: indexPath) else { return false }
+        
+        return !city.isCurrent
+    }
+    
+    func cellDeleteButtonTapped(at indexPath: IndexPath) {
+        
+        guard let city = getCity(for: indexPath) else { return }
+        
+        interactor?.delete(city: city)
+    }
+    
+    func cellTapped(at indexPath: IndexPath) {
+        
+        guard let view = view, let city = getCity(for: indexPath) else { return }
         
         router?.presentWeatherDetailsModule(from: view, for: city)
     }
@@ -73,7 +92,7 @@ class WeatherListPresenter: WeatherListPresenterProtocol {
         
         guard let view = view else { return }
         
-        router?.presentAddCityModule(from: view, delegate: self)
+        self.router?.presentAddCityModule(from: view, delegate: self)
     }
 }
 
@@ -81,11 +100,14 @@ extension WeatherListPresenter: WeatherListInteractorDelegate {
     
     func didFetchCities() {
         
-        if let _ = interactor?.cities.first(where: { $0.isCurrent }) {
+        view?.reloadTableView()
+        
+        if citiesCount > 0 {
             
-            view?.reloadTableView()
-            
-        } else {
+            interactor?.updateAllCities()
+        }
+        
+        if interactor?.cities.first(where: { $0.isCurrent }) == nil {
             
             interactor?.addCityByCurrentLocation()
         }
@@ -93,14 +115,35 @@ extension WeatherListPresenter: WeatherListInteractorDelegate {
     
     func willAddCity() {
         
+        view?.showIndicatorView()
     }
     
     func didAdd(city: City?) {
         
+        view?.dismissIndicatorView()
+        
         view?.reloadTableView()
     }
     
+    func willUpdate(city: City) {
+        
+    }
+    
+    func didUpdate(city: City) {
+        
+        if let index = interactor?.cities.firstIndex(where: { $0.id == city.id }) {
+            
+            view?.reloadTableViewCell(at: IndexPath(row: index, section: 0))
+        }
+    }
+    
+    func didDelete(city: City) {
+        
+    }
+    
     func on(error: Error) {
+        
+        view?.dismissIndicatorView()
         
         if let dataError = error as? NetworkDataError, dataError == .noContentError {
             
