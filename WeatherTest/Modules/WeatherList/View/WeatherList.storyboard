@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sCX-lQ-uJd">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Weather List View Controller-->
+        <scene sceneID="GQ4-2M-kcJ">
+            <objects>
+                <viewController storyboardIdentifier="WeatherListViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Bte-UN-04b" customClass="WeatherListViewController" customModule="WeatherTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6fK-CN-gnh">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JZP-yR-piK">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="YL0-ny-DcG" userLabel="Footer">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="48"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                </view>
+                                <connections>
+                                    <outlet property="dataSource" destination="Bte-UN-04b" id="9IU-s1-EYt"/>
+                                    <outlet property="delegate" destination="Bte-UN-04b" id="67E-Me-oZx"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" name="white"/>
+                        <constraints>
+                            <constraint firstItem="JZP-yR-piK" firstAttribute="top" secondItem="60p-sW-1fb" secondAttribute="top" id="6kw-jg-Igq"/>
+                            <constraint firstAttribute="bottom" secondItem="JZP-yR-piK" secondAttribute="bottom" id="95k-5L-7qg"/>
+                            <constraint firstItem="JZP-yR-piK" firstAttribute="leading" secondItem="60p-sW-1fb" secondAttribute="leading" id="Dg8-or-MhK"/>
+                            <constraint firstItem="60p-sW-1fb" firstAttribute="trailing" secondItem="JZP-yR-piK" secondAttribute="trailing" id="dI4-EJ-fTF"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="60p-sW-1fb"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="AkG-dV-2b8">
+                        <barButtonItem key="rightBarButtonItem" title="Add new city" id="hc9-n8-5cr">
+                            <connections>
+                                <action selector="addCityButtonTapped:" destination="Bte-UN-04b" id="rqt-He-CT5"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="addButtonItem" destination="hc9-n8-5cr" id="E8C-Ta-w9e"/>
+                        <outlet property="tableView" destination="JZP-yR-piK" id="E2f-KP-WcA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IZs-r2-KZB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1042.0289855072465" y="61.607142857142854"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="spt-gv-PnF">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="sCX-lQ-uJd" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="TKj-oL-aWL">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" name="white"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Bte-UN-04b" kind="relationship" relationship="rootViewController" id="1Rj-s5-Wuv"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="J6z-t7-xNd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="131.8840579710145" y="61.607142857142854"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="white">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
