@@ -175,6 +175,8 @@ extension WeatherListInteractor: WeatherListInteractorProtocol {
         
         cities.remove(at: index)
         
+        saveCities()
+        
         presenter?.didDelete(city: city)
     }
 }
